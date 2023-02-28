@@ -1,0 +1,163 @@
+#1. Create a tuple object containing at least 5 values. Print all values from the fourth item to the last item using a slicing technique.
+#Q1 – Answer:
+#this tuple contains a string type, integer, and floating pointn number. 
+My_Tuple=("a", 23, "Mah", 3, 6.73) 
+print(My_Tuple[3:5])#tuple has an indexing attribute, we can refer to different values by refering to their index; it is zero based. 
+ 
+#2. Create 2 SET objects of your own. At least, one item should be included in both SET objects. Execute 4 set operations (i.e., intersection, union, difference, symmetric difference) and print the result. 
+#Q2 – Answer:
+A={15, 16, 17, 19, 22} 
+B={17, 18, 19, 23, 40} 
+ 
+#A and B intersection: all elements that are only available in both A and B at the same time 
+ABIntersction= A&B 
+print(ABIntersction) 
+#another way is using intersectuin function: 
+print(A.intersection(B)) 
+ 
+ 
+#A and B Union: all elements that are available in both A or B 
+ABUnion=A|B 
+print(ABUnion) 
+#another way is using union function: 
+print(A.union(B)) 
+ 
+ 
+#A and B Difference: all elements that are available in A but not B 
+ABDifference=A-B 
+print(ABDifference) 
+#another way is using difference function: 
+print(A.difference(B)) 
+ 
+#A and B Symmetric difference: the elements that are only available in A or only in B(in A and B but not both of them) 
+ABSymDif=A^B 
+print(ABSymDif) 
+#another way is using Symmetric function: 
+print(A.symmetric_difference(B)) 
+ 
+ 
+#3. Create a dictionary object containing at least 5 key-value items where values should be a numeric type. Find the maximum value and print out the value and its corresponding key(s). 
+(hint) use a built-in function to find the maximum value. Then needs to iterate key-value pairs to find the corresponding key(s). https://docs.python.org/3/library/functions.html
+#Q3 – Answer:
+ #we use dictionary.values() to refer to the dictionary's value 
+#using Max function to find the maximum amount 
+#writing a for loop to iterate between all keys of our dictionary, and an if function to find a corresponding value 
+New_Dictionary= {2:6, 3:9, 4:12, 5:15, 6:18, 7:21} 
+MaxValue= max(New_Dictionary.values()) 
+for i in New_Dictionary: 
+    if New_Dictionary[i]== MaxValue: 
+        print(i, "->", New_Dictionary[i]) 
+ 
+ 
+#4. Consider the following codes and understand them by: 
+• Executing the codes and printing out the variable, “s”, to check the output 
+• Checking the following online documents 
+o https://docs.python.org/3/library/string.html 
+o https://docs.python.org/3/library/random.html
+
+import string #using import function to import string and random modules to use their submodules 
+import random 
+ 
+s_base=string.ascii_letters #ascii_letters is a concatenation of ascii_lowercase and ascii_uppercase which is a string starting from abc... to XYZ 
+ 
+random.seed(582) #random.seed function uses random values from a specific group and everytime gives us the same random values 
+ 
+ 
+s= ""   #first we make an empty string value to add new string characters to it 
+#here we want a string with 200 charachters, so we want to generate 200 random numbers; 
+#we want these random numbers to be chosen from the first 26 charachters of s_base(string value has indexing too) 
+for i in range(200): 
+    s+=s_base[random.randint(0,25)] #using randint submodule to get random numbers in a special range; the start and the end of range is considered. these numbers refer the index of string charachters, so we will have 26 random charachters from the ascii_lowercase 
+print(s) 
+ 
+ 
+
+#5. Write codes to count how many times each letter appears in the string object, s, created in Q4 by creating a dictionary object. Each item in the dictionary object has a key-value pair where a key is a letter and its corresponding value is the frequency of the letter appearing in s. 
+Pseudo Code create an empty dictionary object, d a loop to iterate each letter in s if d has a key (i.e., the letter), then increment its value by 1 if d doesn't have a key, then create the key and initialize its value with 1
+#Q5 – Answer: #first we make an empty dictionary to put new values in it, using dict() function 
+#using a for loop to iterate from every charachter in the previous string value; using an if, to determine if the key is available in the new dictionary or not 
+#if it is seen for the first time, so frequency is equal to zero, unless the count should be added by 1. 
+New_DICT= dict() 
+for x in s: 
+     keys=New_DICT.keys() 
+     if x in keys: 
+         New_DICT[x]+=1 
+     else: 
+         New_DICT[x]=1 
+print(New_DICT) 
+ 
+ 
+ 
+ #6. Using the dictionary object created in Q5, iterate over key-value pairs and print out each key and its corresponding frequency if the value is greater than or equal to 10.
+#Q6 – Answer:
+ #making an empty dictionary. Writing our for and if to check the condition for every key:value. 
+#using update to update a dictionary with new (key:value)s each time 
+seconddict={} 
+for i in New_DICT: 
+    if New_DICT[i]>=10: 
+        seconddict.update({i: New_DICT[i]}) 
+print(seconddict) 
+ 
+ 
+#7. Modify the code from Q4 to generate 50 random letters with the random seed value being 901.
+#Q7 – Answer:
+#just same as question 4, but here, as the number of random.seed has changed we will have a new collection of random values 
+#we want a string with 50 charachters, so this process should iterate 50 times 
+s1_base=string.ascii_letters 
+ 
+random.seed(901) 
+ 
+ 
+s1= "" 
+for i in range(50): 
+    s1+=s1_base[random.randint(0,25)] 
+print(s1) 
+ 
+ #8. Write codes to count how many times each letter appears in the string created in Q7 by creating a dictionary object (the same way in Q5).
+#Q8- Answer:
+ #same as question 5 
+Q8Dic=dict() 
+for x in s1: 
+    keys1=Q8Dic.keys() 
+    if x in keys1: 
+        Q8Dic[x]+=1 
+    else: 
+        Q8Dic[x]=1 
+ 
+print(Q8Dic) 
+#print(sum(Q8Dic.values())) #using this code to check if everything is allright, the sum of the frequencies should be 50 (string charachters lengh) 
+ 
+ 
+#9. From two dictionary objects created in Q5 and Q8, find letters that only exist in one of the dictionaries. Use a SET object(s) and its mathematical operator(s). 
+#Q9 – Answer:
+#making a set from a dictionary: first we make an empty set.
+Then using a for loop to iterate between each element of prevoius dictionary. 
+#using "add" submodule to add new values to our set in each iteration. 
+Set9_1=set() 
+for x in New_DICT: 
+    Set9_1.add(x) 
+print(Set9_1) 
+ 
+Set9_2=set() #making the second set from the second dictionary 
+for x in Q8Dic.keys(): 
+    Set9_2.add(x) 
+print(Set9_2) 
+ 
+TwosetsSym=Set9_2^Set9_1  #using symmetric difference to have the letters that only exits in one of the sets, but not the same time 
+print(TwosetsSym) 
+ 
+ 
+#10. Create a None type object. Test if the object is None and print the result. The result should be a Boolean type. Also, check and print the object type using a built-in function. https://docs.python.org/3/library/functions.html
+
+#Q10 – Answer:
+#the type of None is NoneType; we can see it by using type function. then we use True/False if conditions to check if the object is None. 
+x=type(None) 
+print(x) 
+ 
+y = False 
+if x is type(None): 
+    y = True 
+if y: 
+    print("True") 
+else: 
+    print("False")
