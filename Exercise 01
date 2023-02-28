@@ -1,0 +1,186 @@
+#Q1. Create three variables and assign values with three different types (e.g., integer, float, string, list). Print out created variables.
+MyInteger = 2    #2 is an integer and python atomathically considers it as an integer. 
+print(MyInteger) #we need a print function to show the result of any code (except than in python shell env) 
+ 
+print(int(3))    #using an int function is another way to define integer variables. 
+ 
+MyFloat = float(7) #float is function for defining floating point numbers (with a decimal point) 
+print(MyFloat) 
+ 
+MyString = str("Mahdie") #str is a function for defining string values (they are made of some charachters; eg: names) 
+print(MyString) 
+
+#Q2. Concatenate a string "GEOG" and an integer 582. Print the result. Use a built-in function. https://docs.python.org/3/library/functions.html 
+
+#Q2 – Answer:
+#for concatenating a string value and number, we need to convert the number value to a string value, and then concatenate them with additition operator. 
+print("GEOG" + " " + str(582)) 
+
+#Q4. Use a “For Loop” to write a count-up script from 1 to 50. Use a built-in function, range(). Count up by 2 for each loop. 
+#Q4 – Answer: 
+#a for-in structure is used to go through properties of an object. 
+# Range is a function to determine the range between two numbers; the first number is the start of the range, and the second number is the end of the range but not include, so we should add 1 to it. 
+# The third number determines the steps of a count-up or a countdown. 
+for i in range(1, 51, 2): 
+    print(i) 
+
+# Q5. Use a “While Loop” to write a count-down script from 100 to 0. Count down by 1 for each loop.
+# Q5 – Answer:
+#while is a loop used for count-ups and count-downs; first we determine the starting number of the count value, then we subtract 1 from the number for each iteration. 
+#here it starts from 100, and it will be subtracted by 1 in each iteration until count is equal to 0. 
+count = 100 
+while count >= 0: 
+    print(count) 
+    count -= 1 
+
+#Q6. Create a list object that contains even numbers between 100 and 200 (i.e., 100 <= n <= 200).
+# Q6 – Answer:
+#In order for putting our code result in a list, first we define an empty list, here named List6, and we will further use it. Then we use a for-in loop, and determine our specific range (ending with 201, cause the end of loop is not considered). 
+#then we check divisibilty of each number to 2 (to check if they are even or not); % calculates the remainder (if it is equal to zero, the num is even). 
+# I used "newlist.append(oldlist)" structure to put the new even numbers in the previous list of even numbers; the list will be updated in each loop till the end. 
+list6 = [] 
+for i in range(100, 201): 
+    if i % 2 == 0: 
+        list6.append(i) 
+print(list6) 
+
+
+#Q7. Create a 2-dimensional list object containing the following 3 locations. Each location is a list-type object containing a set of longitude and latitude (unit: Decimal Degrees, type: floating value). 
+1. San Diego Lat/Lon=(32.715736, -117.161087) 
+2. Los Angeles Lat/Lon=(34.052235, -118.243683) 
+3. Santa Barbara Lat/Lon=(34.41383, -119.69296)
+# Q7 – Answer:
+ #I defined each list by entering the latitude and altitude of each location (putting them in brackets and separating them by a semicolone. 
+#using the print function to show them. 
+San_Diego = [32.715736, -117.161087] 
+Los_Angeles = [34.052235, -118.243683] 
+Santa_Barbara = [34.41383, -119.69296] 
+ 
+print(San_Diego) 
+print(Los_Angeles) 
+print(Santa_Barbara) 
+
+#Q8. Create a 2-dimensional list object containing the following 3 locations. Each location is a list-type object containing a set of UTM Northing and Easting (unit: meter, type: floating value). Using the object, calculate the distance between San Diego and Santa Barbara and print the result. The units of distance to print out should be kilometers. 
+1. San Diego UTM Northing/Easting=(3619785.60, 484903.85) 
+2. Los Angeles UTM Northing/Easting=(3768645.35, 385215.53) 
+3. Santa Barbara UTM Northing/Easting=(3811331, 252490).
+#Q8 – Answer:
+#making new lists for the locations. 
+# To refer to ith element of a list, we use this format: Listname[i-1] because lists in python are zero-based, and the first element is referred as [0]. 
+#then we write the distance formula by considering operators priority. ** is used for exponantiation. 
+#Order of operations is followed as PEMDAS (Parenthesis, Exponentiation, (Multiplication and Division), (Addition and Subtraction) just like math. 
+San_Diego = [3619785.60, 484903.85] 
+Los_Angeles = [3768645.35, 385215.53] 
+Santa_Barbara = [3811331, 252490] 
+ 
+Dis = (((San_Diego[0] - Santa_Barbara[0])  2 + (San_Diego[1] - Santa_Barbara[1])  2) ** 0.5) / 1000 
+print(Dis) 
+
+#Q9. Create a "Fizz Buzz" program. 
+• Iterate numbers from 1 to 100 
+• Any number divisible by 3, print "fizz" 
+• Any number divisible by 7, print "buzz" 
+• Any number divisible by 3 and 7, print "fizz buzz" 
+• Otherwise, print the number.
+#Q9 – Answer:
+ #using a for-in loop and a range function to determine the range of numbers we want to work on. 
+#first we should set the third condition (divisibility to 3 and 7 at the same time), cause we should write the most uniqe condition after "if" statement. 
+#when we use a condition after "if", this condition shiuld not be True for other than that. 
+# (if we write the condition of divisibilty to only one number (3 or 7) after if, it makes the the condition of divisibility to both numbers idle, cause it will satisfy the first condition sooner, and take a "buzz" or "fizz" sooner, while we wanted a "fizz buzz" from it. 
+#so priority is so important in writing a conditional algorithm.
+for i in range(1, 101): 
+    if i % 3 == 0 and i % 7 == 0: 
+        print("fizz buzz") 
+    elif i % 3 == 0: 
+        print("fizz") 
+    elif i % 7 == 0: 
+        print("buzz") 
+    else: 
+        print(i) 
+        
+#Q10. Create the following list object. Print out the 4th, 5th, and 6th elements by slicing the list. 
+[1, 2, 2, 3, 5, 7, 21, 21, 46, 65, 67]
+
+#Q10 – Answer:  
+#As I mentioned previously, for referring to the ith element of a list we use this: List[i-1]; 
+# so the 4th element of our list can be referred as Mylist[3]. 
+#The 5th element of our list can be referred as Mylist[4] 
+#The 6th element of our list can be referred as Mylist[5] 
+Mylist = [1, 2, 2, 3, 5, 7, 21, 21, 46, 65, 67] 
+print(Mylist[3:4]) 
+print(Mylist[4:5]) 
+print(Mylist[5:6]) 
+
+#Q11. Insert a string value "a" between the 6 th and 7th element in the list created in Q10. 
+#Q11 – Answer:
+#"list.insert(place we want to put it, new value)" is used to insert a new value in a list. I wrote 6 in the parenthesis, as we want to insert it as the 6th element. 
+#then we define the new value which is a string value here at the end of parenthesis. 
+Mylist.insert(6, "a") 
+print(Mylist) 
+ 
+#or we can insert a new value to a list by determining the place we want to add the new value as followong: #Mylist[6:6]="a" 
+
+#Q12. Append two values to the list created in Q11 using two different methods, append() and extend().
+#Q12- Answer:
+#we can use append function as following to add new values to a list: Oldlist.append(new value) 
+Mylist.append(93) 
+Mylist.append(122) 
+print(Mylist) 
+#or we can add new values at the same time in a list to our previous list; but the first one is more favourable in my opinion. 
+#Mylist.append([93,122]) 
+#print(Mylist) 
+  
+#we can use extend function as following to add new lists to an old list: Oldlist.extend(new list) 
+Newlist = [90, 128] 
+Mylist.extend(Newlist) 
+print(Mylist) 
+#or we can add new values at the same time in a list to our previous list; but the first one is more favourable in my opinion. 
+#Mylist.extend([90,128]) 
+#print(Mylist) 
+
+#Q13. Create a program that asks a user to enter the first name and last name separately. Then print out the full name.
+#Q13 – Answer:
+ #using the input function to take an input from the user; 
+# here we take a string value as an input from the user, then we concatenate them with the addition operator, and print the result. 
+First_name = input("Please enter your first name: ") 
+Last_name = input("Please enter your last name: ") 
+print(First_name + " " + Last_name) 
+
+#Q14. Create a program that asks a user to enter a number and then prints out a list of all the divisors of the number. 
+#Q14 – Answer:
+ #using the input function to take an input (an integer number here) from the user; in order for clarifying that the input is an integer not a string value, we use a "int" function. 
+#then we make an empty list (a) to further put the results into it via "append" function. 
+#In order for finding all divisors of the num varibale, we make a for loop to check the divisibility of the num to each i<=num; if thr remainder is zero, so num is divisible to i, and i should be appended to the list of num's divisors. 
+Num = int(input("Please enter a number")) 
+a = [] 
+for i in range(1, Num + 1): 
+    if Num % i == 0: 
+        a.append(i) 
+print(a) 
+ 
+ 
+ 
+#Q15. Create a list object that contains prime numbers between 1 and 10,000. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself (e.g., 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, …). 
+Pseudo Code: Describing a computer program, in particular, its logical structures using a non-executable high-level language. 
+[Pseudo Code] Define a list object Loop from 1 to 10000: 
+Create a binary flag to store a check result.
+ Initialize the binary flag with True (initially assume that the number is a prime number). 
+Loop from 2 to the number to check if the number can be divided by any number between. 
+If divisible, change the flag to False (i.e., not a prime number). 
+If the flag remains True after the 2nd loop, append the number to the list object 
+#Q15 – Answer: 
+#first we make an empty list (a) to further put the results into it via "append" function. 
+#then we write a for-in loop to determine the range of numbers we want to check. 
+#fisrt, we assume each number is a prime number (flag=True), then we check the divisiblity of each number smaller than our main number through a new for-in loop. 
+#if our main number was divisibe to any number, our first assumption of the number being prime will be rejected, so it is not a prime number, and the next num will be checked. 
+#if a num was not divisible to any i, the flag won't change to False for that num, and finally the list of nums having a True flag will be appended to our list, and then printed. 
+a=[] 
+for num in range(2,10001): 
+    flag = True 
+    for i in range(2, num): 
+        if (num % i) == 0: 
+            flag = False 
+ 
+    if flag: 
+        a.append(num) 
+print(a)
